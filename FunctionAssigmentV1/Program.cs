@@ -70,7 +70,7 @@ namespace FunctionAssigmentV1
                 Console.WriteLine("You are not an adult.");
             }
 
-                
+            CompareName(name, "Matti");
             
         }
     }
