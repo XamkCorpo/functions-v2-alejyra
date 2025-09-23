@@ -1,36 +1,49 @@
-﻿namespace FunctionAssigmentV1
+﻿using System.Xml.Linq;
+
+namespace FunctionAssigmentV1
 {
+
     internal class Program
     {
-        static void Main(string[] args)
+        static string AskName()
         {
-            // Everything is intentionally inside Main before refactoring to functions
-            //Your job is to refactor this code to use functions for better readability and reusability.
-            //Check learn on how to do this
-            string name = "";
-            int age = 0;
-
-            // Ask for name and ensure it is not empty
             while (true)
             {
                 Console.Write("Enter your name: ");
-                name = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(name))
-                    break;
-                else
-                    Console.WriteLine("Name cannot be empty.");
-            }
+                string? input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                    return input.Trim();
 
-            // Ask for age and ensure it is a positive integer
+                Console.WriteLine("Name cannot be empty.");
+            }
+        }
+
+       static int AskAge()
+        {
             while (true)
             {
                 Console.Write("Enter your age: ");
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out age) && age > 0)
-                    break;
-                else
+                string? input = Console.ReadLine();
+                if (int.TryParse(input, out int age) && age > 0)
+                    return age;
+
                     Console.WriteLine("Please enter a positive integer.");
             }
+        }
+        
+
+        
+
+        static void Main(string[] args)
+        {
+          
+            string name = AskName();
+            int age = AskAge();
+
+            // Ask for name and ensure it is not empty
+          
+            // Ask for age and ensure it is a positive integer
+           
 
             // Print name and age
             Console.WriteLine($"Your name is {name} and your age is {age}.");
