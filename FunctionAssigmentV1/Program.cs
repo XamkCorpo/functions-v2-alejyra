@@ -5,6 +5,32 @@ namespace FunctionAssigmentV1
 
     internal class Program
     {
+        static void Main(string[] args)
+        {
+
+            string name = AskName();
+            int age = AskAge();
+
+            PrintNameAndAge(name, age);
+            bool isFullAge = CheckOfAge(age);
+
+            if (isFullAge)
+            {
+                Console.WriteLine("You are an adult.");
+            }
+            else
+            {
+                Console.WriteLine("You are not an adult.");
+            }
+
+            CompareName(name, "Matti");
+        }
+
+        /// <summary>
+        /// Ask the user for their name and validate the input
+        /// </summary>
+        /// <returns>returns valid input</returns>
+        
         static string AskName()
         {
             while (true)
@@ -17,7 +43,11 @@ namespace FunctionAssigmentV1
                 Console.WriteLine("Name cannot be empty.");
             }
         }
-
+        /// <summary>
+        /// Ask the user for their age and validate the input
+        /// </summary>
+        /// <returns>Returns valid input</returns>
+        
        static int AskAge()
         {
             while (true)
@@ -31,15 +61,33 @@ namespace FunctionAssigmentV1
             }
         }
       
+        /// <summary>
+        /// Prints the user's name and age
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="age"></param>
+
         static void PrintNameAndAge(string name, int age)
         {
             Console.WriteLine($"Your name is {name} and your age is {age}.");
         }
        
+        /// <summary>
+        /// Checks if the user is of age
+        /// </summary>
+        /// <param name="age"></param>
+        /// <returns>Returns the info whether the user is of age or not</returns>
+
         static bool CheckOfAge(int age)
         {
             return age >= 18;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="CompareTo"></param>
 
         static void CompareName(string name, string CompareTo)
         {
@@ -52,26 +100,6 @@ namespace FunctionAssigmentV1
                 Console.WriteLine($"Your name is exactly '{CompareTo}' (case-sensitive).");
         }
 
-        static void Main(string[] args)
-        {
-          
-            string name = AskName();
-            int age = AskAge();
-
-            PrintNameAndAge(name, age);
-            bool isFullAge = CheckOfAge(age);
-            
-            if (isFullAge)
-            {
-                Console.WriteLine("You are an adult.");
-            }
-            else
-            {
-                Console.WriteLine("You are not an adult.");
-            }
-
-            CompareName(name, "Matti");
-            
-        }
+        
     }
 }
