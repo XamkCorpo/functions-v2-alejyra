@@ -1,13 +1,21 @@
-﻿namespace Calculator
+﻿using System.Transactions;
+
+namespace Calculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            ChooseOperation();
+            ChooseEquation();
+            GetNumber1();
+            GetNumber2();
         }
 
-        static int ChooseOperation()
+        /// <summary>
+        /// Lets the user choose an Equation
+        /// </summary>
+        /// <returns>Returns a valid input</returns>
+        static int ChooseEquation()
         {
             Console.WriteLine("Choose an operation");
             Console.WriteLine("1: addition");
@@ -26,6 +34,42 @@
 
 
         }
+
+        /// <summary>
+        /// User enters the first number for the equation 
+        /// </summary>
+        /// <returns>Returns a valid decimal number</returns>
+        static decimal GetNumber1()
+        {
+            Console.WriteLine("Enter the first number");
+            while (true)
+            {
+                string? input = Console.ReadLine();
+                if (decimal.TryParse(input, out decimal Num1))
+                    return Num1;
+
+                Console.WriteLine("Please enter a number");
+            }
+
+        }
+
+        /// <summary>
+        /// User enters the second number for the equation
+        /// </summary>
+        /// <returns>Returns a valid decimal number</returns>
+        static decimal GetNumber2()
+        {
+            Console.WriteLine("Enter the second number");
+            while (true)
+            {
+                string? input = Console.ReadLine();
+                if (decimal.TryParse(input, out decimal Num2))
+                    return Num2;
+
+                Console.WriteLine("Please enter a number");
+            }
+        }
+
 
     }
 
