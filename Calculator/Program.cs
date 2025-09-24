@@ -18,10 +18,10 @@ namespace Calculator
         static int ChooseEquation()
         {
             Console.WriteLine("Choose an operation");
-            Console.WriteLine("1: addition");
-            Console.WriteLine("2: substraction");
-            Console.WriteLine("3: multiplication");
-            Console.WriteLine("4: division");
+            Console.WriteLine("1: Addition");
+            Console.WriteLine("2: Substraction");
+            Console.WriteLine("3: Multiplication");
+            Console.WriteLine("4: Division");
 
             while (true)
             {
