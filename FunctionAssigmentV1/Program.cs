@@ -1,56 +1,105 @@
-﻿namespace FunctionAssigmentV1
+﻿using System.Xml.Linq;
+
+namespace FunctionAssigmentV1
 {
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            // Everything is intentionally inside Main before refactoring to functions
-            //Your job is to refactor this code to use functions for better readability and reusability.
-            //Check learn on how to do this
-            string name = "";
-            int age = 0;
 
-            // Ask for name and ensure it is not empty
+            string name = AskName();
+            int age = AskAge();
+
+            PrintNameAndAge(name, age);
+            bool isFullAge = CheckOfAge(age);
+
+            if (isFullAge)
+            {
+                Console.WriteLine("You are an adult.");
+            }
+            else
+            {
+                Console.WriteLine("You are not an adult.");
+            }
+
+            CompareName(name, "Matti");
+        }
+
+        /// <summary>
+        /// Ask the user for their name and validate the input
+        /// </summary>
+        /// <returns>returns valid input</returns>
+        
+        static string AskName()
+        {
             while (true)
             {
                 Console.Write("Enter your name: ");
-                name = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(name))
-                    break;
-                else
-                    Console.WriteLine("Name cannot be empty.");
-            }
+                string? input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                    return input.Trim();
 
-            // Ask for age and ensure it is a positive integer
+                Console.WriteLine("Name cannot be empty.");
+            }
+        }
+        /// <summary>
+        /// Ask the user for their age and validate the input
+        /// </summary>
+        /// <returns>Returns valid input</returns>
+        
+       static int AskAge()
+        {
             while (true)
             {
                 Console.Write("Enter your age: ");
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out age) && age > 0)
-                    break;
-                else
+                string? input = Console.ReadLine();
+                if (int.TryParse(input, out int age) && age > 0)
+                    return age;
+
                     Console.WriteLine("Please enter a positive integer.");
             }
-
-            // Print name and age
-            Console.WriteLine($"Your name is {name} and your age is {age}.");
-
-            // Check if the user is an adult
-            if (age >= 18)
-                Console.WriteLine("You are an adult.");
-            else
-                Console.WriteLine("You are not an adult.");
-
-            // Compare the name to another string (e.g., "Matti")
-            string compareName = "Matti";
-
-            // Comparison ignoring case
-            if (name.Equals(compareName, StringComparison.OrdinalIgnoreCase))
-                Console.WriteLine("Your name matches 'Matti' (case-insensitive).");
-
-            // Exact match comparison (case-sensitive)
-            if (name.Equals(compareName))
-                Console.WriteLine("Your name is exactly 'Matti' (case-sensitive).");
         }
+      
+        /// <summary>
+        /// Prints the user's name and age
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="age"></param>
+
+        static void PrintNameAndAge(string name, int age)
+        {
+            Console.WriteLine($"Your name is {name} and your age is {age}.");
+        }
+       
+        /// <summary>
+        /// Checks if the user is of age
+        /// </summary>
+        /// <param name="age"></param>
+        /// <returns>Returns the info whether the user is of age or not</returns>
+
+        static bool CheckOfAge(int age)
+        {
+            return age >= 18;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="CompareTo"></param>
+
+        static void CompareName(string name, string CompareTo)
+        {
+            //case-insensitive
+            if (name.Equals(CompareTo, StringComparison.OrdinalIgnoreCase))
+                Console.WriteLine($"Your name matches '{CompareTo}' (case-insensitive).");
+
+            // case-sensitive
+            if (name.Equals(CompareTo))
+                Console.WriteLine($"Your name is exactly '{CompareTo}' (case-sensitive).");
+        }
+
+        
     }
 }
