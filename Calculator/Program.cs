@@ -1,14 +1,38 @@
-﻿using System.Transactions;
-
-namespace Calculator
+﻿namespace Calculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            ChooseEquation();
-            GetNumber1();
-            GetNumber2();
+            int operation = ChooseEquation();
+            decimal Num1 = GetNumber1();
+            decimal Num2 = GetNumber2();
+            decimal result;
+
+            switch (operation)
+            {
+                case 1:
+                    result = Addition(Num1, Num2);
+                    Console.WriteLine($"The result is: {result}");
+                    break;
+                case 2:
+                    result = Substraction(Num1, Num2);
+                    Console.WriteLine($"The result is: {result}");
+                    break;
+                case 3:
+                    result = Multiplication(Num1, Num2);
+                    Console.WriteLine($"The result is: {result}");
+                    break;
+                case 4:
+                    if (Num2 == 0)
+                        Console.WriteLine("You cannot divide by zero");
+                    else
+                    {
+                        result = Division(Num1, Num2);
+                        Console.WriteLine($"The result is: {result}");
+                    }
+                    break;
+            }
         }
 
         /// <summary>
@@ -45,8 +69,8 @@ namespace Calculator
             while (true)
             {
                 string? input = Console.ReadLine();
-                if (decimal.TryParse(input, out decimal Num1))
-                    return Num1;
+                if (decimal.TryParse(input, out decimal Number1))
+                    return Number1;
 
                 Console.WriteLine("Please enter a number");
             }
@@ -63,14 +87,32 @@ namespace Calculator
             while (true)
             {
                 string? input = Console.ReadLine();
-                if (decimal.TryParse(input, out decimal Num2))
-                    return Num2;
+                if (decimal.TryParse(input, out decimal Number2))
+                    return Number2;
 
                 Console.WriteLine("Please enter a number");
             }
         }
 
+        static decimal Addition(decimal Num1, decimal Num2)
+        {
+         return Num1 + Num2;
+        }
 
+        static decimal Substraction(decimal Num1, decimal Num2)
+        {
+            return Num1 - Num2;
+        }
+
+        static decimal Multiplication(decimal Num1, decimal Num2)
+        {
+            return Num1 * Num2;
+        }
+
+        static decimal Division(decimal Num1, decimal Num2)
+        {
+            return Num1 / Num2;
+        }
     }
 
 
