@@ -7,21 +7,21 @@
             int operation = ChooseEquation();
             decimal Num1 = GetNumber1();
             decimal Num2 = GetNumber2();
-            decimal result;
+            decimal result = 0;
 
             switch (operation)
             {
                 case 1:
                     result = Addition(Num1, Num2);
-                    Console.WriteLine($"The result is: {result}");
+                    
                     break;
                 case 2:
                     result = Substraction(Num1, Num2);
-                    Console.WriteLine($"The result is: {result}");
+                    
                     break;
                 case 3:
                     result = Multiplication(Num1, Num2);
-                    Console.WriteLine($"The result is: {result}");
+                    
                     break;
                 case 4:
                     if (Num2 == 0)
@@ -29,10 +29,12 @@
                     else
                     {
                         result = Division(Num1, Num2);
-                        Console.WriteLine($"The result is: {result}");
+                        
                     }
                     break;
             }
+
+           PrintResult(result);
         }
 
         /// <summary>
@@ -94,24 +96,62 @@
             }
         }
 
+        /// <summary>
+        /// Performs the addition of two numbers
+        /// </summary>
+        /// <param name="Num1"></param>
+        /// <param name="Num2"></param>
+        /// <returns>Returns the sum the two numbers</returns>
+
         static decimal Addition(decimal Num1, decimal Num2)
         {
-         return Num1 + Num2;
+            return Num1 + Num2;
         }
+
+        /// <summary>
+        /// Performs the substraction of two numbers
+        /// </summary>
+        /// <param name="Num1"></param>
+        /// <param name="Num2"></param>
+        /// <returns>Returns the difference of the two numbers</returns>
 
         static decimal Substraction(decimal Num1, decimal Num2)
         {
             return Num1 - Num2;
         }
 
+        /// <summary>
+        /// Performs the multiplication of two numbers
+        /// </summary>
+        /// <param name="Num1"></param>
+        /// <param name="Num2"></param>
+        /// <returns>Returns the product of the two numbers</returns>
+
         static decimal Multiplication(decimal Num1, decimal Num2)
         {
             return Num1 * Num2;
         }
 
+        /// <summary>
+        /// Performs the division of two numbers
+        /// </summary>
+        /// <param name="Num1"></param>
+        /// <param name="Num2"></param>
+        /// <returns>Returns the quotient of the two numbers</returns>
+
         static decimal Division(decimal Num1, decimal Num2)
         {
             return Num1 / Num2;
+        }
+
+        /// <summary>
+        /// Prints the result to the console
+        /// </summary>
+        /// <param name="result"></param>
+
+        static void PrintResult(decimal result)
+        {
+            Console.WriteLine($"The result: {result}");
         }
     }
 
